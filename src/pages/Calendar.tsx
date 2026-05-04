@@ -132,6 +132,34 @@ const MonthView = ({ onSelect }: { onSelect: (e: CalendarEvent) => void }) => {
 };
 
 /* ---------------- Week view ---------------- */
+const FragmentRow = ({ h, days, onSelect }: { h: number; days: Date[]; onSelect: (e: CalendarEvent) => void }) => (
+  <>
+    <div className="border-r border-b border-primary/15 px-2 py-3 text-[10px] text-muted-foreground bg-card/20">
+      {String(h).padStart(2, "0")}:00
+    </div>
+    {days.map((d) => {
+      const iso = fmtISO(d);
+      const slots = EVENTS.filter((e) => e.date === iso && e.type === "mentor" && e.time && parseInt(e.time.split(":")[0], 10) === h);
+      return (
+        <div key={`${iso}-${h}`} className="border-r border-b border-primary/15 min-h-[44px] p-1 bg-card flex flex-col gap-1">
+          {slots.map((e) => {
+            const meta = TYPE_META[e.type];
+            return (
+              <button
+                key={e.id}
+                onClick={() => onSelect(e)}
+                className={`text-left text-[10px] uppercase tracking-nav truncate px-1.5 py-1 border ${meta.chip}`}
+              >
+                {e.time} · {e.title.replace("Mentor Session — ", "")}
+              </button>
+            );
+          })}
+        </div>
+      );
+    })}
+  </>
+);
+
 const WeekView = ({ onSelect }: { onSelect: (e: CalendarEvent) => void }) => {
   const [weekStart, setWeekStart] = useState(() => new Date("2026-06-01")); // Monday June 1
   // Make sure starts on Monday
