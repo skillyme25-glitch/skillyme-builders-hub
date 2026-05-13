@@ -75,7 +75,7 @@ export const TopNav = () => {
       {open && (
         <div
           className="lg:hidden absolute left-0 right-0 top-16 border-t border-primary/15"
-          style={{ background: "rgba(10,10,10,0.98)" }}
+          style={{ background: "hsl(212 55% 7% / 0.98)" }}
         >
           <nav className="flex flex-col px-6 py-6 gap-5">
             {NAV_ITEMS.map((item) => {
