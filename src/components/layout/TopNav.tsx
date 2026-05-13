@@ -20,16 +20,17 @@ export const TopNav = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 h-16 backdrop-blur-md"
-      style={{ background: "rgba(10,10,10,0.92)" }}
+      className="fixed top-0 left-0 right-0 z-50 h-16 backdrop-blur-md border-b border-primary/15"
+      style={{ background: "hsl(212 55% 7% / 0.92)" }}
     >
       <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-6 md:px-10">
         <Link
           to="/welcome"
-          className="font-serif-display text-primary tracking-editorial text-[16px] md:text-[18px] uppercase"
+          className="flex items-center gap-3 font-serif-display text-foreground tracking-editorial text-[15px] md:text-[17px] uppercase"
           style={{ letterSpacing: "0.2em" }}
         >
-          Skillyme Africa
+          <img src={logo} alt="Skillyme Africa" className="h-8 w-auto" />
+          <span className="hidden sm:inline">Skillyme <span className="text-primary">Africa</span></span>
         </Link>
 
         {/* Desktop nav */}
