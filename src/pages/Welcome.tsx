@@ -51,7 +51,7 @@ const Welcome = () => {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,10,10,0.65) 0%, rgba(10,10,10,0.85) 100%)",
+              "linear-gradient(180deg, hsl(212 55% 7% / 0.65) 0%, hsl(212 55% 7% / 0.9) 100%)",
           }}
         />
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center animate-fade-in-slow">
