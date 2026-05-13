@@ -9,77 +9,75 @@
 
 @layer base {
   :root {
-    /* Core surfaces */
-    --background: 0 0% 4%;            /* #0A0A0A near-black */
-    --foreground: 36 32% 93%;         /* #F5F0E8 warm off-white */
+    /* Core surfaces — deep indigo midnight, evoking African nightfall */
+    --background: 212 55% 7%;         /* #08111F */
+    --foreground: 40 30% 95%;         /* #F6F2EA warm ivory */
 
-    --card: 0 0% 7%;                  /* #111111 */
-    --card-foreground: 36 32% 93%;
+    --card: 212 50% 11%;              /* #0E1B2D */
+    --card-foreground: 40 30% 95%;
 
-    --surface: 0 0% 10%;              /* #1A1A1A elevated */
-    --surface-foreground: 36 32% 93%;
+    --surface: 212 45% 14%;           /* elevated */
+    --surface-foreground: 40 30% 95%;
 
-    --popover: 0 0% 10%;
-    --popover-foreground: 36 32% 93%;
+    --popover: 212 50% 11%;
+    --popover-foreground: 40 30% 95%;
 
-    /* Brand */
-    --primary: 44 56% 54%;            /* #C9A84C gold */
-    --primary-foreground: 0 0% 4%;
+    /* Brand — teal drawn from the Skillyme mark */
+    --primary: 182 68% 42%;           /* #22B6B6 */
+    --primary-foreground: 212 55% 7%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 36 32% 93%;
+    --secondary: 212 45% 14%;
+    --secondary-foreground: 40 30% 95%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 36 7% 51%;    /* #8A8478 muted warm grey */
+    --muted: 212 35% 18%;
+    --muted-foreground: 210 18% 68%;  /* #9DAEC0 */
 
-    --accent: 44 56% 54%;
-    --accent-foreground: 0 0% 4%;
+    --accent: 198 75% 60%;            /* sky-blue accent */
+    --accent-foreground: 212 55% 7%;
 
-    --destructive: 6 67% 46%;         /* #C0392B */
-    --destructive-foreground: 36 32% 93%;
+    --destructive: 6 67% 52%;
+    --destructive-foreground: 40 30% 95%;
 
-    --success: 145 63% 49%;           /* #2ECC71 */
-    --success-foreground: 0 0% 4%;
+    --success: 162 60% 48%;
+    --success-foreground: 212 55% 7%;
 
-    --border: 44 56% 54%;             /* used with /15 alpha */
-    --input: 0 0% 14%;
-    --ring: 44 56% 54%;
+    --border: 182 68% 50%;
+    --input: 212 40% 16%;
+    --ring: 182 68% 50%;
 
-    --radius: 0.125rem;               /* 2px — editorial sharp */
+    --radius: 0.125rem;
 
-    /* Sidebar (kept compatible with shadcn sidebar) */
-    --sidebar-background: 0 0% 7%;
-    --sidebar-foreground: 36 32% 93%;
-    --sidebar-primary: 44 56% 54%;
-    --sidebar-primary-foreground: 0 0% 4%;
-    --sidebar-accent: 0 0% 10%;
-    --sidebar-accent-foreground: 36 32% 93%;
-    --sidebar-border: 44 56% 54%;
-    --sidebar-ring: 44 56% 54%;
+    --sidebar-background: 212 50% 11%;
+    --sidebar-foreground: 40 30% 95%;
+    --sidebar-primary: 182 68% 42%;
+    --sidebar-primary-foreground: 212 55% 7%;
+    --sidebar-accent: 212 45% 14%;
+    --sidebar-accent-foreground: 40 30% 95%;
+    --sidebar-border: 182 68% 50%;
+    --sidebar-ring: 182 68% 50%;
   }
 
-  /* Force the dark, editorial palette globally — no light mode in this product */
   .dark {
-    --background: 0 0% 4%;
-    --foreground: 36 32% 93%;
-    --card: 0 0% 7%;
-    --card-foreground: 36 32% 93%;
-    --surface: 0 0% 10%;
-    --popover: 0 0% 10%;
-    --popover-foreground: 36 32% 93%;
-    --primary: 44 56% 54%;
-    --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 36 32% 93%;
-    --muted: 0 0% 12%;
-    --muted-foreground: 36 7% 51%;
-    --accent: 44 56% 54%;
-    --accent-foreground: 0 0% 4%;
-    --destructive: 6 67% 46%;
-    --destructive-foreground: 36 32% 93%;
-    --border: 44 56% 54%;
-    --input: 0 0% 14%;
-    --ring: 44 56% 54%;
+    --background: 212 55% 7%;
+    --foreground: 40 30% 95%;
+    --card: 212 50% 11%;
+    --card-foreground: 40 30% 95%;
+    --surface: 212 45% 14%;
+    --popover: 212 50% 11%;
+    --popover-foreground: 40 30% 95%;
+    --primary: 182 68% 42%;
+    --primary-foreground: 212 55% 7%;
+    --secondary: 212 45% 14%;
+    --secondary-foreground: 40 30% 95%;
+    --muted: 212 35% 18%;
+    --muted-foreground: 210 18% 68%;
+    --accent: 198 75% 60%;
+    --accent-foreground: 212 55% 7%;
+    --destructive: 6 67% 52%;
+    --destructive-foreground: 40 30% 95%;
+    --border: 182 68% 50%;
+    --input: 212 40% 16%;
+    --ring: 182 68% 50%;
   }
 }
 
