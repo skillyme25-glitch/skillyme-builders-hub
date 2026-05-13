@@ -158,7 +158,7 @@ const Welcome = () => {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.92) 100%)",
+              "linear-gradient(180deg, hsl(212 55% 7% / 0.78) 0%, hsl(212 55% 7% / 0.95) 100%)",
           }}
         />
         <div className="relative z-10 mx-auto max-w-6xl">
