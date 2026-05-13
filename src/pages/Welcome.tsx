@@ -51,7 +51,7 @@ const Welcome = () => {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,10,10,0.65) 0%, rgba(10,10,10,0.85) 100%)",
+              "linear-gradient(180deg, hsl(212 55% 7% / 0.65) 0%, hsl(212 55% 7% / 0.9) 100%)",
           }}
         />
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center animate-fade-in-slow">
@@ -111,7 +111,7 @@ const Welcome = () => {
       </section>
 
       {/* THREE CARDS */}
-      <section className="py-24 md:py-32 px-6 md:px-12">
+      <section className="african-pattern py-24 md:py-32 px-6 md:px-12">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <p className="label-eyebrow">Begin Here</p>
@@ -158,7 +158,7 @@ const Welcome = () => {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.92) 100%)",
+              "linear-gradient(180deg, hsl(212 55% 7% / 0.78) 0%, hsl(212 55% 7% / 0.95) 100%)",
           }}
         />
         <div className="relative z-10 mx-auto max-w-6xl">

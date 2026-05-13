@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { TEAM, VIEWER_ID } from "@/data/mock";
+import logo from "@/assets/logo.png";
 
 const NAV_ITEMS = [
   { to: "/welcome", label: "Welcome" },
@@ -19,16 +20,17 @@ export const TopNav = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 h-16 backdrop-blur-md"
-      style={{ background: "rgba(10,10,10,0.92)" }}
+      className="fixed top-0 left-0 right-0 z-50 h-16 backdrop-blur-md border-b border-primary/15"
+      style={{ background: "hsl(212 55% 7% / 0.92)" }}
     >
       <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-6 md:px-10">
         <Link
           to="/welcome"
-          className="font-serif-display text-primary tracking-editorial text-[16px] md:text-[18px] uppercase"
+          className="flex items-center gap-3 font-serif-display text-foreground tracking-editorial text-[15px] md:text-[17px] uppercase"
           style={{ letterSpacing: "0.2em" }}
         >
-          Skillyme Africa
+          <img src={logo} alt="Skillyme Africa" className="h-8 w-auto" />
+          <span className="hidden sm:inline">Skillyme <span className="text-primary">Africa</span></span>
         </Link>
 
         {/* Desktop nav */}
@@ -73,7 +75,7 @@ export const TopNav = () => {
       {open && (
         <div
           className="lg:hidden absolute left-0 right-0 top-16 border-t border-primary/15"
-          style={{ background: "rgba(10,10,10,0.98)" }}
+          style={{ background: "hsl(212 55% 7% / 0.98)" }}
         >
           <nav className="flex flex-col px-6 py-6 gap-5">
             {NAV_ITEMS.map((item) => {
