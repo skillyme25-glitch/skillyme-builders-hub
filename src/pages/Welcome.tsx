@@ -111,7 +111,7 @@ const Welcome = () => {
       </section>
 
       {/* THREE CARDS */}
-      <section className="py-24 md:py-32 px-6 md:px-12">
+      <section className="african-pattern py-24 md:py-32 px-6 md:px-12">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <p className="label-eyebrow">Begin Here</p>
