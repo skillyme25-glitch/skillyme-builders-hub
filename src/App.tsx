@@ -11,6 +11,7 @@ import Builders from "./pages/Builders.tsx";
 import Calendar from "./pages/Calendar.tsx";
 import Submissions from "./pages/Submissions.tsx";
 import Support from "./pages/Support.tsx";
+import Admin from "./pages/Admin.tsx";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/submissions" element={<Submissions />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
