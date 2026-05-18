@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { to: "/calendar", label: "Calendar" },
   { to: "/submissions", label: "Submissions" },
   { to: "/support", label: "Support" },
+  { to: "/admin", label: "Admin" },
 ];
 
 export const TopNav = () => {
