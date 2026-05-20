@@ -1,7 +1,7 @@
-// Admin write API. Verifies a bcrypt password against admin_secrets on every
-// request, then performs the requested mutation with the service role key.
+// Admin write API. Verifies the password via a SECURITY DEFINER postgres
+// function (uses pgcrypto's crypt), then performs the requested mutation
+// with the service role key.
 import { createClient } from "npm:@supabase/supabase-js@2.45.4";
-import bcrypt from "npm:bcryptjs@2.4.3";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -47,14 +47,8 @@ Deno.serve(async (req) => {
     return json({ error: "missing password" }, 401);
   }
 
-  const { data: secret, error: secretErr } = await supabase
-    .from("admin_secrets")
-    .select("password_hash")
-    .eq("id", 1)
-    .single();
-  if (secretErr || !secret) return json({ error: "admin not configured" }, 500);
-
-  const ok = await bcrypt.compare(password, secret.password_hash);
+  const { data: ok, error: verifyErr } = await supabase.rpc("verify_admin_password", { p: password });
+  if (verifyErr) return json({ error: verifyErr.message }, 500);
   if (!ok) return json({ error: "invalid password" }, 401);
 
   const action = body.action as string | undefined;
@@ -66,17 +60,12 @@ Deno.serve(async (req) => {
     if (!newPassword || newPassword.length < 6) {
       return json({ error: "password must be 6+ chars" }, 400);
     }
-    const hash = await bcrypt.hash(newPassword, 10);
-    const { error } = await supabase
-      .from("admin_secrets")
-      .update({ password_hash: hash, updated_at: new Date().toISOString() })
-      .eq("id", 1);
+    const { error } = await supabase.rpc("set_admin_password", { p: newPassword });
     if (error) return json({ error: error.message }, 400);
     return json({ ok: true });
   }
 
   if (action === "create_builder") {
-    // Creates an auth user (random pw) and seeds their profile row.
     const profile = body.profile as Record<string, unknown> | undefined;
     if (!profile?.email || !profile?.full_name) {
       return json({ error: "email and full_name required" }, 400);
@@ -89,7 +78,6 @@ Deno.serve(async (req) => {
     });
     if (createErr) return json({ error: createErr.message }, 400);
     const uid = created.user!.id;
-    // Trigger seeds profile row; update with provided fields.
     const { error: upErr } = await supabase
       .from("profiles")
       .update({
