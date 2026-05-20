@@ -14,7 +14,358 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admin_secrets: {
+        Row: {
+          id: number
+          password_hash: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          password_hash: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          password_hash?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          attendees_label: string | null
+          date_label: string | null
+          id: string
+          location: string | null
+          sort_order: number
+          time_label: string | null
+          title: string | null
+          type: string | null
+        }
+        Insert: {
+          attendees_label?: string | null
+          date_label?: string | null
+          id?: string
+          location?: string | null
+          sort_order?: number
+          time_label?: string | null
+          title?: string | null
+          type?: string | null
+        }
+        Update: {
+          attendees_label?: string | null
+          date_label?: string | null
+          id?: string
+          location?: string | null
+          sort_order?: number
+          time_label?: string | null
+          title?: string | null
+          type?: string | null
+        }
+        Relationships: []
+      }
+      faqs: {
+        Row: {
+          answer: string
+          id: string
+          question: string
+          sort_order: number
+        }
+        Insert: {
+          answer: string
+          id?: string
+          question: string
+          sort_order?: number
+        }
+        Update: {
+          answer?: string
+          id?: string
+          question?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      mentor_sessions: {
+        Row: {
+          date_label: string | null
+          focus: string | null
+          id: string
+          meet_url: string | null
+          mentor_id: string | null
+          past: boolean
+          sort_order: number
+        }
+        Insert: {
+          date_label?: string | null
+          focus?: string | null
+          id?: string
+          meet_url?: string | null
+          mentor_id?: string | null
+          past?: boolean
+          sort_order?: number
+        }
+        Update: {
+          date_label?: string | null
+          focus?: string | null
+          id?: string
+          meet_url?: string | null
+          mentor_id?: string | null
+          past?: boolean
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mentor_sessions_mentor_id_fkey"
+            columns: ["mentor_id"]
+            isOneToOne: false
+            referencedRelation: "mentors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mentors: {
+        Row: {
+          bio: string | null
+          id: string
+          industry: string | null
+          initials: string | null
+          name: string
+          project_id: string | null
+        }
+        Insert: {
+          bio?: string | null
+          id?: string
+          industry?: string | null
+          initials?: string | null
+          name: string
+          project_id?: string | null
+        }
+        Update: {
+          bio?: string | null
+          id?: string
+          industry?: string | null
+          initials?: string | null
+          name?: string
+          project_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mentors_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          active_today: boolean
+          country: string | null
+          country_flag: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          initials: string | null
+          is_admin: boolean
+          profile_complete: boolean
+          role: string | null
+          role_detail: string | null
+          team_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          active_today?: boolean
+          country?: string | null
+          country_flag?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          initials?: string | null
+          is_admin?: boolean
+          profile_complete?: boolean
+          role?: string | null
+          role_detail?: string | null
+          team_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          active_today?: boolean
+          country?: string | null
+          country_flag?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          initials?: string | null
+          is_admin?: boolean
+          profile_complete?: boolean
+          role?: string | null
+          role_detail?: string | null
+          team_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          created_at: string
+          icon_key: string
+          id: string
+          name: string
+          number: number
+          one_liner: string
+          slug: string
+        }
+        Insert: {
+          created_at?: string
+          icon_key?: string
+          id?: string
+          name: string
+          number: number
+          one_liner?: string
+          slug: string
+        }
+        Update: {
+          created_at?: string
+          icon_key?: string
+          id?: string
+          name?: string
+          number?: number
+          one_liner?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          deadline_date_label: string | null
+          deadline_title: string | null
+          hours_remaining: number | null
+          id: number
+          project_brief: string[]
+          total_window_hours: number | null
+          updated_at: string
+        }
+        Insert: {
+          deadline_date_label?: string | null
+          deadline_title?: string | null
+          hours_remaining?: number | null
+          id?: number
+          project_brief?: string[]
+          total_window_hours?: number | null
+          updated_at?: string
+        }
+        Update: {
+          deadline_date_label?: string | null
+          deadline_title?: string | null
+          hours_remaining?: number | null
+          id?: number
+          project_brief?: string[]
+          total_window_hours?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      teams: {
+        Row: {
+          created_at: string
+          id: string
+          letter: string
+          name: string
+          project_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          letter: string
+          name: string
+          project_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          letter?: string
+          name?: string
+          project_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "teams_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      weeks: {
+        Row: {
+          check_in_due: string | null
+          check_in_status: string
+          date_range: string
+          deliverable_summary: string
+          expectations: string[]
+          id: string
+          number: number
+          reviewed_by: string[]
+          status: string
+          submission_due: string | null
+          submission_status: string
+          team_id: string | null
+          theme: string
+        }
+        Insert: {
+          check_in_due?: string | null
+          check_in_status?: string
+          date_range: string
+          deliverable_summary?: string
+          expectations?: string[]
+          id?: string
+          number: number
+          reviewed_by?: string[]
+          status?: string
+          submission_due?: string | null
+          submission_status?: string
+          team_id?: string | null
+          theme: string
+        }
+        Update: {
+          check_in_due?: string | null
+          check_in_status?: string
+          date_range?: string
+          deliverable_summary?: string
+          expectations?: string[]
+          id?: string
+          number?: number
+          reviewed_by?: string[]
+          status?: string
+          submission_due?: string | null
+          submission_status?: string
+          team_id?: string | null
+          theme?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "weeks_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
